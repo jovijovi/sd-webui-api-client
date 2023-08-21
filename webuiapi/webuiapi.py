@@ -646,6 +646,10 @@ class WebUIApi:
         response = self.session.get(url=f"{self.baseurl}/loras")
         return response.json()
 
+    def refresh_loras(self):
+        response = self.session.post(url=f"{self.baseurl}/refresh-loras")
+        return response.json()
+
     def get_sd_models(self):
         response = self.session.get(url=f"{self.baseurl}/sd-models")
         return response.json()
