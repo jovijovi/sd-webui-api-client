@@ -274,6 +274,8 @@ class WebUIApi:
         sampler_index=None,  # deprecated: use sampler_name
         use_deprecated_controlnet=False,
         use_async=False,
+        refiner_checkpoint="",  # Refiner checkpoint
+        refiner_switch_at=0.8,  # Refiner switch at
     ):
         if sampler_index is None:
             sampler_index = self.default_sampler
@@ -325,6 +327,8 @@ class WebUIApi:
             "send_images": send_images,
             "save_images": save_images,
             "alwayson_scripts": alwayson_scripts,
+            "refiner_checkpoint": refiner_checkpoint,
+            "refiner_switch_at": refiner_switch_at,
         }
 
         if use_deprecated_controlnet and controlnet_units and len(controlnet_units) > 0:
@@ -411,6 +415,8 @@ class WebUIApi:
         controlnet_units: List[ControlNetUnit] = [],
         use_deprecated_controlnet=False,
         use_async=False,
+        refiner_checkpoint="",  # Refiner checkpoint
+        refiner_switch_at=0.8,  # Refiner switch at
     ):
         if sampler_name is None:
             sampler_name = self.default_sampler
@@ -465,6 +471,8 @@ class WebUIApi:
             "send_images": send_images,
             "save_images": save_images,
             "alwayson_scripts": alwayson_scripts,
+            "refiner_checkpoint": refiner_checkpoint,
+            "refiner_switch_at": refiner_switch_at,
         }
         if mask_image is not None:
             payload["mask"] = b64_img(mask_image)
